@@ -1,0 +1,29 @@
+spring:
+  main:
+    banner-mode: "off"
+  application:
+    name: voisin-online-login
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: voisin_online_user
+      username: root
+      password: root
+      authentication-database: admin
+cache:
+  user:
+    time: ${CACHE_USER_TIME:5}
+    maximum-size: ${CACHE_USER_MAXIMUM_SIZE?:10000}
+
+
+server:
+  port: 8080
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework: INFO
+    org.springframework.data.mongodb.core.MongoTemplate: INFO
+    org.apache.http: INFO
+    org.springframework.web: INFO
