@@ -18,12 +18,16 @@ public class User implements Serializable {
     private static final long serialVersionUID = -4078215116959398051L;
 
     @Id
+    private String id;
+    @Indexed
     private String mail;
     @Indexed
     private String name;
     @Indexed
     private String phone;
     private boolean active;
+    private Credential credential;
+
     private LocalDateTime createdAt = LocalDateTime.now();
     private LocalDateTime updatedAt;
 }

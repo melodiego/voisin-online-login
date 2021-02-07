@@ -14,18 +14,17 @@ public class CredentialsBCryptFactory {
 
     private CredentialsBCryptFactory() { throw new IllegalStateException("Utility class");}
 
-    public static Credential create(String credentialName, CredentialFormDTO dto) {
+    public static Credential create(CredentialFormDTO credentialFormDTO) {
         byte[] salt = PasswordUtil.generateSaltBcrypt();
-        byte[] hashPass = PasswordUtil.hashBcrypt(dto.getPassword().getBytes(), salt);
+        byte[] hashPass = PasswordUtil.hashBcrypt(credentialFormDTO.getPassword().getBytes(), salt);
 
         Credential credential = new Credential();
-        credential.setName(credentialName);
         credential.setCreatedAt(LocalDateTime.now());
 
-        CredentialPassword data = new CredentialPassword(hashPass, salt);
-        credential.setData(data);
-        credential.setActive(Boolean.TRUE);
+        CredentialPassword credentialPassword = new CredentialPassword(hashPass, salt);
 
+        credential.setData(credentialPassword);
+        credential.setActive(Boolean.TRUE);
         credential.setCryptoParams(getCryptoParams());
 
         return credential;

@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class UserFormDTO implements Serializable {
     private static final long serialVersionUID = -5427059725181642708L;
 
+    private String id;
     @NotBlank(message = "The name could not be null or empty.")
     private String name;
     @NotBlank(message = "The mail could not be null or empty.")
